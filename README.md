@@ -57,7 +57,20 @@ npm run dev
 | Método | Rota | Descrição |
 |--------|------|-----------|
 | GET | /api/health | Health check da API |
+| GET | /api/products | Lista produtos (paginação, filtros) |
+| GET | /api/products/:id | Detalhe de um produto |
+| POST | /api/products/sync | Reingere produtos da DummyJSON |
 
+### Query params — `GET /api/products`
+
+| Param | Tipo | Descrição |
+|-------|------|-----------|
+| `category` | string | Filtra por categoria (ex.: `smartphones`) |
+| `minPrice` | number | Preço mínimo |
+| `maxPrice` | number | Preço máximo |
+| `search` | string | Busca em título e descrição |
+| `page` | number | Página (padrão: 1) |
+| `limit` | number | Itens por página (padrão: 20, máx.: 100) |
 
 
 ---
