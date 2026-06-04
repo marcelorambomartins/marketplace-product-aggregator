@@ -1,7 +1,16 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+function getApiBaseUrl(): string {
+  if (typeof window !== 'undefined') {
+    return '/api';
+  }
+  return (
+    process.env.API_URL ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    'http://localhost:3001/api'
+  );
+}
 
 async function fetchAPI<T>(path: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`${getApiBaseUrl()}${path}`, {
     headers: { 'Content-Type': 'application/json' },
     ...options,
   });
