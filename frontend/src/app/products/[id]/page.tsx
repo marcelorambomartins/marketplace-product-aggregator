@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Header } from '@/components/Header';
+import { ProductCompareButton } from '@/components/ProductCompareButton';
 import { formatDate, formatPrice } from '@/lib/format';
 import { getProduct } from '@/lib/products';
 
@@ -56,6 +57,8 @@ export default async function ProductDetailPage({
             <p className="text-3xl font-bold text-slate-900">
               {formatPrice(product.price)}
             </p>
+
+            <ProductCompareButton product={product} />
 
             <dl className="grid grid-cols-2 gap-3 text-sm">
               <div>

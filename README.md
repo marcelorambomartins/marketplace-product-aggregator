@@ -82,7 +82,8 @@ Na primeira subida, o backend ingere automaticamente os produtos da [DummyJSON](
 |------|-----------|
 | `/` | Listagem com filtros (busca, categoria, preço) e paginação |
 | `/products/:id` | Detalhe do produto |
+| `/compare?ids=1,2,3` | Comparação lado a lado (mín. 2, máx. 4 produtos) |
 
-Os filtros ficam na URL (`?search=iphone&category=smartphones`), permitindo compartilhar e recarregar a busca.
+Na listagem, marque **Comparar** nos cards (ou no detalhe), depois use a barra fixa inferior. Os filtros ficam na URL (`?search=iphone`), permitindo compartilhar a busca; a comparação também (`?ids=1,5,12`).
 
 ---
