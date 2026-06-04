@@ -25,12 +25,14 @@ Antes do primeiro `docker-compose up`, rode `npm install` em **backend** e **fro
 ```bash
 cd backend && npm install && cd ..
 cd frontend && npm install && cd ..
-docker-compose up --build
+docker compose up --build
 ```
 
-- Frontend: http://localhost:3000
-- Backend: http://localhost:3001
-- Swagger: http://localhost:3001/api/docs
+Se a página abrir vazia ou com erro de API, aguarde o backend concluir a ingestão (~30s na primeira subida) e recarregue. Para rebuild completo: `docker compose down && docker compose build --no-cache && docker compose up`.
+
+- Frontend: http://127.0.0.1:3000
+- Backend: http://127.0.0.1:3001
+- Swagger: http://127.0.0.1:3001/api/docs
 
 ### Sem Docker
 
@@ -72,5 +74,15 @@ npm run dev
 | `page` | number | Página (padrão: 1) |
 | `limit` | number | Itens por página (padrão: 20, máx.: 100) |
 
+Na primeira subida, o backend ingere automaticamente os produtos da [DummyJSON](https://dummyjson.com). Os dados ficam em memória e são perdidos ao reiniciar o processo.
+
+## Frontend
+
+| Rota | Descrição |
+|------|-----------|
+| `/` | Listagem com filtros (busca, categoria, preço) e paginação |
+| `/products/:id` | Detalhe do produto |
+
+Os filtros ficam na URL (`?search=iphone&category=smartphones`), permitindo compartilhar e recarregar a busca.
 
 ---
